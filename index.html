@@ -142,15 +142,40 @@
     .hero-slides { position: absolute; inset: 0; }
     .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.3s ease; background: #0D0D0D; }
     .hero-slide.active { opacity: 1; }
-    .hero-slide-bg { position: absolute; inset: 0; overflow: hidden; }
-    .hero-slide-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; transform: scale(1.06); transition: transform 8s ease; }
-    .hero-slide.active .hero-slide-bg img { transform: scale(1); }
-    .hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.22) 100%); }
-    .hero-slide-content { position: absolute; bottom: 13%; left: 50%; transform: translateX(-50%); text-align: center; width: 90%; max-width: 720px; z-index: 2; }
-    .hero-slide-subtitle { font-size: 0.73rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 1rem; }
-    .hero-slide-title { font-family: var(--font-display); font-size: clamp(2.8rem,8vw,7rem); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; color: var(--white); margin-bottom: 2rem; opacity: 0; transform: translateY(18px); transition: opacity 0.85s ease 0.25s, transform 0.85s ease 0.25s; }
+    .hero-slide-bg { display: none; }
+    .hero-slide-overlay { display: none; }
+    .hero-slide-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 92%; max-width: 1200px; z-index: 2; }
+    /* Subtle radial green glow in hero center */
+    #hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 65% 55% at 50% 52%, rgba(26,77,26,0.2) 0%, transparent 68%); pointer-events: none; }
+    .hero-slide-subtitle {
+      font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 1.75rem;
+      display: flex; align-items: center; justify-content: center; gap: 1.25rem;
+    }
+    .hero-slide-subtitle::before, .hero-slide-subtitle::after {
+      content: ''; display: block; width: 36px; height: 1px; background: rgba(76,175,80,0.45);
+    }
+    .hero-slide-title {
+      font-family: var(--font-display);
+      font-size: clamp(4.2rem, 13vw, 11.5rem);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      color: var(--white);
+      margin-bottom: 2.75rem;
+      opacity: 0; transform: translateY(22px);
+      transition: opacity 0.9s ease 0.2s, transform 0.9s var(--ease-out) 0.2s;
+      text-shadow: 0 0 120px rgba(255,255,255,0.06);
+    }
     .hero-slide.active .hero-slide-title { opacity: 1; transform: translateY(0); }
-    .hero-slide-btn { display: inline-block; font-size: 0.82rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--white); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.45); padding-bottom: 3px; opacity: 0; transform: translateY(10px); transition: opacity 0.7s ease 0.5s, transform 0.7s ease 0.5s, color 0.3s ease, border-color 0.3s ease; }
+    .hero-title-accent { font-style: italic; color: var(--gold); font-weight: 800; display: block; }
+    .hero-slide-btn {
+      display: inline-block; font-size: 0.8rem; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--white);
+      text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 4px; opacity: 0; transform: translateY(10px);
+      transition: opacity 0.7s ease 0.52s, transform 0.7s ease 0.52s, color 0.3s ease, border-color 0.3s ease;
+    }
     .hero-slide.active .hero-slide-btn { opacity: 1; transform: translateY(0); }
     .hero-slide-btn:hover { color: var(--green-bright); border-color: var(--green-bright); }
     .hero-dots { position: absolute; bottom: 4.5%; left: 50%; transform: translateX(-50%); display: flex; gap: 0.7rem; z-index: 10; }
@@ -646,8 +671,8 @@
     .products-circles-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:0 1rem 1rem; }
     .products-circles-wrap::-webkit-scrollbar { display:none; }
     .products-circles { display:flex; gap:2rem; max-width:1200px; margin:0 auto; padding:0.5rem 1rem; justify-content:center; flex-wrap:wrap; }
-    .prod-circle-item { display:flex; flex-direction:column; align-items:center; gap:1rem; width:175px; flex-shrink:0; cursor:pointer; }
-    .prod-circle-img { width:155px; height:155px; border-radius:50%; overflow:hidden; border:1.5px solid rgba(76,175,80,0.28); transition:all 0.4s var(--ease); flex-shrink:0; }
+    .prod-circle-item { display:flex; flex-direction:column; align-items:center; gap:1rem; width:205px; flex-shrink:0; cursor:pointer; text-decoration:none; color:inherit; }
+    .prod-circle-img { width:182px; height:182px; border-radius:50%; overflow:hidden; border:1.5px solid rgba(76,175,80,0.28); transition:all 0.4s var(--ease); flex-shrink:0; position:relative; }
     .prod-circle-item:hover .prod-circle-img { border-color:var(--green-bright); box-shadow:0 0 30px rgba(76,175,80,0.22); }
     .prod-circle-img img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 0.6s var(--ease); }
     .prod-circle-item:hover .prod-circle-img img { transform:scale(1.09); }
@@ -713,18 +738,212 @@
       .about-slide { padding:2.25rem 1.5rem; }
       .about-slide h3 { font-size:1.45rem; }
       .products-circles { gap:1.25rem; flex-wrap:nowrap; justify-content:flex-start; }
-      .prod-circle-item { width:145px; }
-      .prod-circle-img { width:125px; height:125px; }
-      .hero-slide-title { font-size:clamp(2.2rem,9vw,4.5rem); }
+      .prod-circle-item { width:155px; }
+      .prod-circle-img { width:133px; height:133px; }
+      .hero-slide-title { font-size:clamp(3rem,11vw,5.5rem); letter-spacing:-0.03em; }
     }
     @media(max-width:520px){
       .gallery-masonry{columns:1}
       .process-steps{grid-template-columns:1fr}
       .deco-c1,.deco-c2{display:none}
     }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(76,175,80,0.38); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--green-bright); }
+
+    /* ── PAGE LOADER ── */
+    #page-loader {
+      position: fixed; inset: 0; z-index: 9999;
+      background: #080808;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
+      transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+    }
+    #page-loader.done { opacity: 0; pointer-events: none; transform: scale(1.04); }
+    .loader-logo-row { display: flex; align-items: center; gap: 0.75rem; opacity: 0; animation: ldUp 0.7s var(--ease-out) 0.2s forwards; }
+    .loader-icon-box { width: 36px; height: 36px; background: var(--green-bright); border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 32px rgba(76,175,80,0.75); }
+    .loader-brand { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; }
+    .loader-brand .g { color: var(--green-bright); }
+    .loader-progress { width: 190px; height: 1px; background: rgba(255,255,255,0.06); border-radius: 10px; overflow: hidden; opacity: 0; animation: ldUp 0.4s ease 0.5s forwards; }
+    .loader-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--green-deep), var(--green-bright)); animation: ldFill 1.4s cubic-bezier(0.25,0.46,0.45,0.94) 0.6s forwards; }
+    .loader-tagline { font-size: 0.64rem; letter-spacing: 0.26em; text-transform: uppercase; color: rgba(255,255,255,0.2); opacity: 0; animation: ldUp 0.4s ease 0.8s forwards; }
+    @keyframes ldUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes ldFill { from { width:0%; } to { width:100%; } }
+
+    /* ── CUSTOM CURSOR ── */
+    #cursor-dot { width: 7px; height: 7px; background: var(--green-bright); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); box-shadow: 0 0 10px rgba(76,175,80,0.9); transition: width .2s ease, height .2s ease, background .2s ease, box-shadow .2s ease; }
+    #cursor-ring { width: 34px; height: 34px; border: 1px solid rgba(76,175,80,0.4); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9997; transform: translate(-50%,-50%); transition: width .3s ease, height .3s ease, border-color .3s ease; }
+    body.cursor-active #cursor-dot { width: 11px; height: 11px; background: #F1641E; box-shadow: 0 0 18px rgba(241,100,30,0.9); }
+    body.cursor-active #cursor-ring { width: 52px; height: 52px; border-color: rgba(241,100,30,0.3); }
+    @media (hover: none) { #cursor-dot, #cursor-ring { display: none; } }
+
+    /* ── HERO CANVAS ── */
+    #hero-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.55; }
+
+    /* ── STATS ROW ── */
+    .stats-row { background: var(--dark-warm); padding: 5rem 2rem; position: relative; z-index: 1; border-bottom: 1px solid rgba(76,175,80,0.08); }
+    .stats-row::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(76,175,80,0.22), transparent); }
+    .stats-inner { max-width: 920px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-item { text-align: center; padding: 1rem 2rem; border-right: 1px solid rgba(255,255,255,0.045); }
+    .stat-item:last-child { border-right: none; }
+    .stat-val { font-family: var(--font-display); font-size: clamp(2.8rem,4.5vw,4rem); font-weight: 900; color: var(--white); line-height: 1; letter-spacing: -0.03em; display: flex; align-items: baseline; justify-content: center; gap: 3px; margin-bottom: 0.55rem; }
+    .stat-val .suf { font-size: 0.52em; color: var(--green-bright); font-weight: 700; }
+    .stat-lbl { font-size: 0.67rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    @media(max-width:640px) { .stats-inner { grid-template-columns: 1fr 1fr; } .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); padding: 1.75rem 1rem; } }
+
+    /* ── MARQUEE MASK EDGES ── */
+    .marquee-strip { -webkit-mask-image: linear-gradient(to right, transparent 0%, black 9%, black 91%, transparent 100%); mask-image: linear-gradient(to right, transparent 0%, black 9%, black 91%, transparent 100%); }
+
+    /* ── GALLERY CAPTIONS ── */
+    .gal-caption { position: absolute; bottom: 0; left: 0; right: 0; z-index: 4; padding: 1.5rem 1.25rem 1rem; background: linear-gradient(to top, rgba(0,0,0,0.86) 0%, transparent 100%); opacity: 0; transform: translateY(6px); transition: all 0.32s ease; pointer-events: none; }
+    .gallery-item:hover .gal-caption { opacity: 1; transform: translateY(0); }
+    .gal-caption span { font-size: 0.67rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+    /* ── TESTIMONIAL ENHANCEMENT ── */
+    .testi-card { position: relative; }
+    .testi-bg-num { position: absolute; top: 1.5rem; right: 1.75rem; font-family: var(--font-display); font-size: 6.5rem; font-weight: 900; color: rgba(232,200,64,0.04); line-height: 1; pointer-events: none; user-select: none; }
+    .testi-stars { display: flex; align-items: center; gap: 2px; margin-bottom: 1.1rem; }
+    .testi-stars span { color: var(--gold); font-size: 0.88rem; }
+    .testi-verified { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.57rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(76,175,80,0.65); border: 1px solid rgba(76,175,80,0.2); border-radius: 2px; padding: 0.14rem 0.45rem; margin-left: 0.65rem; vertical-align: middle; }
+
+    /* ── MOBILE NAV ETSY ── */
+    .mob-etsy { display: inline-flex !important; align-items: center; gap: 0.6rem; background: #F1641E !important; color: white !important; padding: 0.88rem 2.2rem; border-radius: 40px; font-family: var(--font-body) !important; font-size: 0.85rem !important; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.25rem; }
+    .mob-etsy:hover { background: #d9561a !important; }
+
+    /* ── SECTION POLISH ── */
+    #products { background: linear-gradient(180deg, #0d0d0b 0%, #08100a 60%, #0d0d0b 100%); }
+    #why { background: linear-gradient(180deg, #0d0d0b 0%, #070e08 55%, #0d0d0b 100%); }
+    .pain-content h2 { text-shadow: 0 0 100px rgba(232,200,64,0.13); }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: rgba(76,175,80,0.05);
+      border-bottom: 1px solid rgba(76,175,80,0.1);
+      padding: 0.9rem 2rem;
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.5rem; flex-wrap: wrap; position: relative; z-index: 1;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 0.55rem;
+      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .trust-item strong { color: var(--green-bright); font-weight: 500; }
+    .trust-sep { color: rgba(76,175,80,0.2); display: none; }
+    @media(max-width:520px){ .trust-strip { gap: 1.25rem; } }
+
+    /* ── PROD CIRCLE ETSY OVERLAY ── */
+    .prod-circle-overlay {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: rgba(241,100,30,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.35s ease; z-index: 2; pointer-events: none;
+    }
+    .prod-circle-item:hover .prod-circle-overlay { background: rgba(241,100,30,0.72); }
+    .prod-circle-overlay-text {
+      font-size: 0.64rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: white; font-weight: 700; white-space: nowrap;
+      opacity: 0; transform: scale(0.88); transition: all 0.3s ease;
+    }
+    .prod-circle-item:hover .prod-circle-overlay-text { opacity: 1; transform: scale(1); }
+
+    /* ── HERO BTNS ── */
+    .hero-btns { display: flex; align-items: center; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+    .hero-slide-btn-etsy {
+      display: inline-flex; align-items: center; gap: 0.45rem;
+      font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #F1641E; text-decoration: none;
+      border-bottom: 1px solid rgba(241,100,30,0.45); padding-bottom: 3px;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.7s ease 0.65s, transform 0.7s ease 0.65s, color 0.3s ease, border-color 0.3s ease;
+    }
+    .hero-slide.active .hero-slide-btn-etsy { opacity: 1; transform: translateY(0); }
+    .hero-slide-btn-etsy:hover { color: #ff7a3d; border-color: #ff7a3d; }
+
+    /* ── COLLECTION BANNER ── */
+    .collection-banner {
+      padding: 9rem 2rem;
+      background: linear-gradient(180deg, #0d0d0b 0%, #0a180a 50%, #0d0d0b 100%);
+      position: relative; overflow: hidden; text-align: center;
+    }
+    .collection-banner::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(ellipse at 50% 50%, rgba(76,175,80,0.14) 0%, transparent 62%);
+    }
+    .collection-banner-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+    .collection-banner h2 { font-size: clamp(2.4rem,5vw,4.2rem); line-height: 1.1; margin-bottom: 1.25rem; }
+    .collection-banner h2 em { font-style: italic; color: var(--gold); }
+    .collection-banner p { font-size: 1.05rem; color: var(--white-dim); line-height: 1.85; margin: 0 auto 3rem; max-width: 500px; }
+    .btn-etsy-big {
+      display: inline-flex; align-items: center; gap: 0.9rem;
+      padding: 1.2rem 3.25rem;
+      background: #F1641E;
+      color: white; text-decoration: none;
+      font-family: var(--font-body); font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      border-radius: 3px;
+      box-shadow: 0 0 60px rgba(241,100,30,0.35), 0 4px 20px rgba(0,0,0,0.3);
+      transition: all 0.4s var(--ease); position: relative; overflow: hidden;
+    }
+    .btn-etsy-big::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 55%);
+    }
+    .btn-etsy-big:hover { transform: translateY(-3px); box-shadow: 0 0 90px rgba(241,100,30,0.55), 0 20px 50px rgba(0,0,0,0.3); }
+    .collection-trust {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.5rem; flex-wrap: wrap; margin-top: 2.5rem;
+    }
+    .collection-trust-item { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+
+    /* ── FLOATING ETSY BUTTON ── */
+    .etsy-float {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 150;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      transform: translateY(16px);
+    }
+    .etsy-float.show { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .etsy-float-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 1.6rem;
+      background: #F1641E;
+      color: white; text-decoration: none;
+      font-family: var(--font-body); font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      border-radius: 50px;
+      box-shadow: 0 4px 30px rgba(241,100,30,0.5), 0 2px 12px rgba(0,0,0,0.35);
+      transition: all 0.35s ease;
+    }
+    .etsy-float-btn:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 8px 50px rgba(241,100,30,0.65), 0 4px 20px rgba(0,0,0,0.3); }
+    @media(max-width:520px){ .etsy-float { bottom: 1rem; right: 1rem; } .etsy-float-btn { padding: 0.75rem 1.25rem; font-size: 0.7rem; } }
   </style>
 </head>
 <body>
+
+<!-- ── PAGE LOADER ── -->
+<div id="page-loader">
+  <div class="loader-logo-row">
+    <div class="loader-icon-box">
+      <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
+        <path d="M12 3C7 3 3 7.5 3 12c0 2 .8 3.8 2 5.1C6.5 15.3 9 14 12 14s5.5 1.3 7 3.1C20.2 15.8 21 14 21 12c0-4.5-4-9-9-9z" fill="#0b0b09"/>
+        <path d="M12 14c-3 0-5.5 1.3-7 3.1C6.8 19.9 9.2 21 12 21s5.2-1.1 7-3c-1.5-1.7-4-3-7-3z" fill="#0b0b09" opacity="0.6"/>
+        <ellipse cx="12" cy="11" rx="5" ry="7" fill="none" stroke="#0b0b09" stroke-width="1.2"/>
+        <line x1="12" y1="4" x2="12" y2="20" stroke="#0b0b09" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="loader-brand"><span class="g">Green</span>place</div>
+  </div>
+  <div class="loader-progress"><div class="loader-progress-fill"></div></div>
+  <p class="loader-tagline">Preserved Moss Art · Handmade</p>
+</div>
+
+<!-- ── CURSOR ── -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
 
 <!-- ── NAV ── -->
 <nav id="navbar">
@@ -757,49 +976,51 @@
   <a href="#gallery" onclick="toggleMenu()">Gallery</a>
   <a href="#why" onclick="toggleMenu()">Why Moss</a>
   <a href="#contact" onclick="toggleMenu()">Order</a>
+  <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="mob-etsy" onclick="toggleMenu()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    Shop on Etsy
+  </a>
 </div>
 
 
 <!-- ── HERO SLIDER ── -->
 <section id="hero">
+  <canvas id="hero-canvas"></canvas>
   <div class="hero-slides" id="hero-slides">
 
     <!-- Slide 1 -->
     <div class="hero-slide active">
-      <div class="hero-slide-bg">
-        <img src="pics/lifestyle-sofa.png" alt="Moss wall art in interior">
-      </div>
-      <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="hero-slide-subtitle">Preserved Moss Artwork</p>
-        <h2 class="hero-slide-title">Natural Art<br>for Your Interior</h2>
-        <a href="#products" class="hero-slide-btn">Shop Now</a>
+        <h2 class="hero-slide-title">Natural Art<span class="hero-title-accent">for Your Interior</span></h2>
+        <div class="hero-btns">
+          <a href="#products" class="hero-slide-btn">Explore Collection</a>
+          <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener" class="hero-slide-btn-etsy">Shop on Etsy →</a>
+        </div>
       </div>
     </div>
 
     <!-- Slide 2 -->
     <div class="hero-slide">
-      <div class="hero-slide-bg">
-        <img src="pics/tall-panel.png" alt="LED illuminated moss panel">
-      </div>
-      <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="hero-slide-subtitle">LED Illuminated Panel</p>
-        <h2 class="hero-slide-title">Central Park<br>Wall Art</h2>
-        <a href="#products" class="hero-slide-btn">Shop Now</a>
+        <h2 class="hero-slide-title">Central Park<span class="hero-title-accent">Wall Art</span></h2>
+        <div class="hero-btns">
+          <a href="#products" class="hero-slide-btn">Explore Collection</a>
+          <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener" class="hero-slide-btn-etsy">Shop on Etsy →</a>
+        </div>
       </div>
     </div>
 
     <!-- Slide 3 -->
     <div class="hero-slide">
-      <div class="hero-slide-bg">
-        <img src="pics/moss-glow-wall.png" alt="Glowing preserved moss wall">
-      </div>
-      <div class="hero-slide-overlay"></div>
       <div class="hero-slide-content">
         <p class="hero-slide-subtitle">Handcrafted with Nature</p>
-        <h2 class="hero-slide-title">From Small Pieces<br>to Full Installations</h2>
-        <a href="#products" class="hero-slide-btn">Shop Now</a>
+        <h2 class="hero-slide-title">Small Pieces<span class="hero-title-accent">to Full Installations</span></h2>
+        <div class="hero-btns">
+          <a href="#products" class="hero-slide-btn">Explore Collection</a>
+          <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener" class="hero-slide-btn-etsy">Shop on Etsy →</a>
+        </div>
       </div>
     </div>
 
@@ -834,6 +1055,41 @@
     <div class="marquee-item">A gift they'll never forget <span class="dot">⊙</span></div>
     <div class="marquee-item">Interior greening <span class="dot">⊙</span></div>
     <div class="marquee-item">Stabilized moss art <span class="dot">⊙</span></div>
+  </div>
+</div>
+
+
+<!-- ── TRUST STRIP ── -->
+<div class="trust-strip">
+  <div class="trust-item"><strong>★★★★★</strong>&nbsp; 5-Star Etsy Shop</div>
+  <span class="trust-sep">·</span>
+  <div class="trust-item"><strong>✦</strong>&nbsp; Free Worldwide Shipping</div>
+  <span class="trust-sep">·</span>
+  <div class="trust-item"><strong>⊙</strong>&nbsp; Every Piece Handmade</div>
+  <span class="trust-sep">·</span>
+  <div class="trust-item">Crafting since <strong>2016</strong></div>
+</div>
+
+
+<!-- ── STATS ── -->
+<div class="stats-row">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-val"><span class="stat-count" data-target="8">0</span><span class="suf">+ yrs</span></div>
+      <div class="stat-lbl">In the craft</div>
+    </div>
+    <div class="stat-item reveal d1">
+      <div class="stat-val"><span class="stat-count" data-target="5">0</span><span class="suf">.0 ★</span></div>
+      <div class="stat-lbl">Etsy rating</div>
+    </div>
+    <div class="stat-item reveal d2">
+      <div class="stat-val"><span class="stat-count" data-target="200">0</span><span class="suf">+</span></div>
+      <div class="stat-lbl">Pieces created</div>
+    </div>
+    <div class="stat-item reveal d3">
+      <div class="stat-val"><span class="stat-count" data-target="30">0</span><span class="suf">+</span></div>
+      <div class="stat-lbl">Countries shipped</div>
+    </div>
   </div>
 </div>
 
@@ -896,76 +1152,82 @@
     <div class="products-circles reveal d1">
 
       <!-- Product 1 -->
-      <div class="prod-circle-item">
+      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
         <div class="prod-circle-img">
           <img src="pics/closeup-led.png" alt="Handcrafted Moss Art with Grapevine Wood">
+          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
         </div>
         <div class="prod-circle-info">
           <div class="prod-circle-name">Handcrafted Moss Art with Grapevine Wood &amp; Epoxy Resin</div>
           <div class="prod-circle-price">$375</div>
           <div class="prod-circle-size">40 in × 10 in</div>
         </div>
-      </div>
+      </a>
 
       <!-- Product 2 -->
-      <div class="prod-circle-item">
+      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
         <div class="prod-circle-img">
           <img src="pics/tall-panel.png" alt="Central Park Moss Wall Art">
+          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
         </div>
         <div class="prod-circle-info">
           <div class="prod-circle-name">Large Stabilized Moss Wall Art "Central Park"</div>
           <div class="prod-circle-price">$790</div>
           <div class="prod-circle-size">200×40 cm · LED Panel · Red Oak Frame</div>
         </div>
-      </div>
+      </a>
 
       <!-- Product 3 -->
-      <div class="prod-circle-item">
+      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
         <div class="prod-circle-img">
           <img src="pics/prod-led-forest.png" alt="LED Preserved Moss Wall Art">
+          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
         </div>
         <div class="prod-circle-info">
           <div class="prod-circle-name">LED Preserved Moss Wall Art</div>
           <div class="prod-circle-price">$240</div>
           <div class="prod-circle-size">30×40 cm · Eco Forest Panel · Red Oak Frame</div>
         </div>
-      </div>
+      </a>
 
       <!-- Product 4 -->
-      <div class="prod-circle-item">
+      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
         <div class="prod-circle-img">
           <img src="pics/prod-three-panel.png" alt="Handcrafted Moss Art with LED">
+          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
         </div>
         <div class="prod-circle-info">
           <div class="prod-circle-name">Handcrafted Moss Art with Grapevine &amp; LED Decor</div>
           <div class="prod-circle-price">$490</div>
           <div class="prod-circle-size">Red Oak Frame · LED Lighted</div>
         </div>
-      </div>
+      </a>
 
       <!-- Product 5 -->
-      <div class="prod-circle-item">
+      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
         <div class="prod-circle-img">
           <img src="pics/moss-glow-wall.png" alt="Large LED Moss Wall Art">
+          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
         </div>
         <div class="prod-circle-info">
           <div class="prod-circle-name">Large LED Moss Wall Art — 3 Moss Types, Grapevine &amp; Epoxy Resin</div>
           <div class="prod-circle-price">from $1,200</div>
           <div class="prod-circle-size">Different sizes available</div>
         </div>
-      </div>
+      </a>
 
       <!-- Product 6 -->
-      <div class="prod-circle-item">
+      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
         <div class="prod-circle-img">
           <img src="pics/lifestyle-sofa.png" alt="America Map Moss Art">
+          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
         </div>
         <div class="prod-circle-info">
           <div class="prod-circle-name">America Map — Preserved Mosses &amp; Epoxy Resin, Two-Level Lighting</div>
           <div class="prod-circle-price">from $700</div>
           <div class="prod-circle-size">From 16 × 24 in · Remote-Controlled</div>
         </div>
-      </div>
+      </a>
 
     </div>
   </div>
@@ -1254,31 +1516,37 @@
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="pics/brooklyn-bridge.png" alt="Moss panel at Brooklyn Bridge" loading="lazy">
       <div class="gal-overlay"></div>
+      <div class="gal-caption"><span>Custom Composition · New York</span></div>
     </div>
 
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="pics/closeup-led.png" alt="LED-backlit moss close-up" loading="lazy">
       <div class="gal-overlay"></div>
+      <div class="gal-caption"><span>LED Series · Grapevine & Moss Detail</span></div>
     </div>
 
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="pics/woman-holding.png" alt="Woman with moss panel" loading="lazy">
       <div class="gal-overlay"></div>
+      <div class="gal-caption"><span>Statement Piece · Scale Reference</span></div>
     </div>
 
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="pics/shelf-display.png" alt="Moss panel on shelf" loading="lazy">
       <div class="gal-overlay"></div>
+      <div class="gal-caption"><span>Home Installation · Ambient Lighting</span></div>
     </div>
 
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="pics/moss-glow-wall.png" alt="Glowing moss panel on wall" loading="lazy">
       <div class="gal-overlay"></div>
+      <div class="gal-caption"><span>Illuminated Panel · Night Mode</span></div>
     </div>
 
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="pics/hero.png" alt="Moss panels in home" loading="lazy">
       <div class="gal-overlay"></div>
+      <div class="gal-caption"><span>Full Collection · Multiple Formats</span></div>
     </div>
 
   </div>
@@ -1337,28 +1605,54 @@
   <!-- Real Etsy reviews -->
   <div class="testi-grid">
     <div class="testi-card reveal">
-      <div style="display:flex;gap:0.25rem;margin-bottom:1.25rem;">
-        <span style="color:var(--gold);font-size:1rem;">★★★★★</span>
+      <div class="testi-bg-num">01</div>
+      <div class="testi-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span class="testi-verified">✓ Etsy</span>
       </div>
       <span class="quote-mark">"</span>
       <p class="testi-text">Absolutely stunning piece that fits perfectly into any interior. It looks incredibly stylish and vibrant, like a piece of nature brought into your home. I loved that the moss requires no maintenance — no watering or special care needed. Excellent quality and fast delivery.</p>
-      <div class="testi-author"><div class="author-av">E</div><div><div class="author-name">Verified Buyer</div><div class="author-ctx">Etsy · Dec 2024 · Interior decor piece</div></div></div>
+      <div class="testi-author"><div class="author-av">V</div><div><div class="author-name">Verified Buyer</div><div class="author-ctx">Etsy · Dec 2024 · Interior decor piece</div></div></div>
     </div>
     <div class="testi-card reveal d1">
-      <div style="display:flex;gap:0.25rem;margin-bottom:1.25rem;">
-        <span style="color:var(--gold);font-size:1rem;">★★★★★</span>
+      <div class="testi-bg-num">02</div>
+      <div class="testi-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span class="testi-verified">✓ Etsy</span>
       </div>
       <span class="quote-mark">"</span>
-      <p class="testi-text">Really lovely! The light adds drama. The back texture is really interesting and attractive. Love it!</p>
+      <p class="testi-text">Really lovely! The light adds drama. The back texture is really interesting and attractive. The quality of the craftsmanship is evident in every detail. Love it!</p>
       <div class="testi-author"><div class="author-av">E</div><div><div class="author-name">Elizabeth</div><div class="author-ctx">Etsy · Dec 2024 · Custom Moss & Oak Bark Wall Art</div></div></div>
     </div>
     <div class="testi-card reveal d2">
-      <div style="display:flex;gap:0.25rem;margin-bottom:1.25rem;">
-        <span style="color:var(--gold);font-size:1rem;">★★★★★</span>
+      <div class="testi-bg-num">03</div>
+      <div class="testi-stars">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        <span class="testi-verified">✓ Etsy</span>
       </div>
       <span class="quote-mark">"</span>
-      <p class="testi-text">Quality product, all good.</p>
+      <p class="testi-text">Quality product, all good. Exactly as described — beautiful piece that arrived perfectly packaged and ready to hang. Very happy with the purchase.</p>
       <div class="testi-author"><div class="author-av">E</div><div><div class="author-name">Elizaveta</div><div class="author-ctx">Etsy · Dec 2024 · Verified Purchase</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── COLLECTION BANNER ── -->
+<section class="collection-banner">
+  <div class="collection-banner-inner reveal">
+    <div class="section-eyebrow" style="justify-content:center;margin-bottom:1.5rem">The Shop</div>
+    <h2>Ready to find your<br><em>perfect piece?</em></h2>
+    <p>Browse the full collection on Etsy — handmade moss art, LED panels, and custom installations. Every order ships free worldwide.</p>
+    <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener" class="btn-etsy-big">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      Browse Full Collection on Etsy
+    </a>
+    <div class="collection-trust">
+      <span class="collection-trust-item">★★★★★ 5-star rated</span>
+      <span class="collection-trust-item">Free worldwide shipping</span>
+      <span class="collection-trust-item">Every piece handmade</span>
+      <span class="collection-trust-item">Ships from the US</span>
     </div>
   </div>
 </section>
@@ -1447,6 +1741,15 @@
 </div>
 
 
+<!-- ── FLOATING ETSY BUTTON ── -->
+<div class="etsy-float" id="etsy-float">
+  <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener" class="etsy-float-btn">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    Shop on Etsy
+  </a>
+</div>
+
+
 <!-- ── JS ── -->
 <script>
   /* Hero Slider */
@@ -1476,7 +1779,11 @@
 
   /* Nav */
   const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll',()=>{ navbar.classList.toggle('scrolled',window.scrollY>60); },{passive:true});
+  const etsyFloat = document.getElementById('etsy-float');
+  window.addEventListener('scroll',()=>{
+    navbar.classList.toggle('scrolled',window.scrollY>60);
+    etsyFloat.classList.toggle('show', window.scrollY > 500);
+  },{passive:true});
 
   /* Mobile menu */
   const hamburger = document.getElementById('hamburger');
@@ -1534,6 +1841,93 @@
       if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
     });
   });
+
+  /* ── PAGE LOADER ── */
+  (function(){
+    const loader = document.getElementById('page-loader');
+    if(!loader) return;
+    document.documentElement.style.overflow = 'hidden';
+    function hide(){
+      loader.classList.add('done');
+      document.documentElement.style.overflow = '';
+      setTimeout(()=>{ if(loader.parentNode) loader.parentNode.removeChild(loader); }, 950);
+    }
+    if(document.readyState === 'complete'){ setTimeout(hide, 1700); }
+    else { window.addEventListener('load', ()=>setTimeout(hide, 1700)); }
+    setTimeout(hide, 4000); // hard fallback
+  })();
+
+  /* ── CUSTOM CURSOR ── */
+  (function(){
+    const dot = document.getElementById('cursor-dot');
+    const ring = document.getElementById('cursor-ring');
+    if(!dot || !ring || window.matchMedia('(hover:none)').matches) return;
+    let mx=0, my=0, rx=0, ry=0;
+    document.addEventListener('mousemove', e=>{ mx=e.clientX; my=e.clientY; dot.style.left=mx+'px'; dot.style.top=my+'px'; });
+    (function animRing(){ rx+=(mx-rx)*0.11; ry+=(my-ry)*0.11; ring.style.left=rx+'px'; ring.style.top=ry+'px'; requestAnimationFrame(animRing); })();
+    document.querySelectorAll('a,button,.gallery-item,.prod-circle-item,.why-card,.testi-card,.shop-card').forEach(el=>{
+      el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-active'));
+      el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-active'));
+    });
+  })();
+
+  /* ── HERO PARTICLES ── */
+  (function(){
+    const canvas = document.getElementById('hero-canvas');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, pts=[], raf;
+    function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+    function Pt(init){
+      this.x = Math.random()*W;
+      this.y = init ? Math.random()*H : H+6;
+      this.r = Math.random()*1.6+0.3;
+      this.vx = (Math.random()-0.5)*0.22;
+      this.vy = -(Math.random()*0.45+0.12);
+      this.life = init ? Math.random() : 0;
+      this.max = Math.random()*0.5+0.3;
+      this.gold = this.r < 0.75;
+    }
+    function setup(){ resize(); pts=[]; for(let i=0;i<85;i++) pts.push(new Pt(true)); }
+    function draw(){
+      ctx.clearRect(0,0,W,H);
+      pts.forEach((p,i)=>{
+        const prog=p.life/p.max;
+        let a = prog<0.18 ? prog/0.18 : prog>0.72 ? (1-prog)/0.28 : 1;
+        a *= 0.42;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle = p.gold ? `rgba(232,200,64,${a*0.65})` : `rgba(76,175,80,${a})`;
+        ctx.fill();
+        p.x+=p.vx; p.y+=p.vy; p.life+=0.0028;
+        if(p.life>p.max||p.y<-8) pts[i]=new Pt(false);
+      });
+      raf=requestAnimationFrame(draw);
+    }
+    window.addEventListener('resize',()=>{ cancelAnimationFrame(raf); setup(); draw(); });
+    setup(); draw();
+  })();
+
+  /* ── STAT COUNTERS ── */
+  (function(){
+    const els = document.querySelectorAll('.stat-count');
+    if(!els.length) return;
+    let fired=false;
+    const obs = new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting && !fired){
+        fired=true;
+        els.forEach(el=>{
+          const target=+el.dataset.target, dur=1700, t0=performance.now();
+          (function tick(now){
+            const p=Math.min((now-t0)/dur,1), e=1-Math.pow(1-p,3);
+            el.textContent=Math.round(e*target);
+            if(p<1) requestAnimationFrame(tick);
+          })(performance.now());
+        });
+      }
+    },{threshold:0.35});
+    const row=document.querySelector('.stats-row');
+    if(row) obs.observe(row);
+  })();
 </script>
 </body>
 </html>

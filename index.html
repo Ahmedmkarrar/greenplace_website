@@ -140,10 +140,13 @@
     /* Spacer so content below starts after the hero */
     #hero-spacer { height: 100vh; display: block; }
     .hero-slides { position: absolute; inset: 0; }
-    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.3s ease; background: #0D0D0D; }
+    .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.3s ease; background-size: cover; background-position: center; }
+    .hero-slide:nth-child(1) { background-image: url('pics/hero-1.jpg'); }
+    .hero-slide:nth-child(2) { background-image: url('pics/hero-2.jpg'); }
+    .hero-slide:nth-child(3) { background-image: url('pics/hero-3.jpg'); }
     .hero-slide.active { opacity: 1; }
     .hero-slide-bg { display: none; }
-    .hero-slide-overlay { display: none; }
+    .hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)); z-index: 1; }
     .hero-slide-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 92%; max-width: 1200px; z-index: 2; }
     /* Subtle radial green glow in hero center */
     #hero::before { content: ''; position: absolute; inset: 0; z-index: 0; background: radial-gradient(ellipse 65% 55% at 50% 52%, rgba(26,77,26,0.2) 0%, transparent 68%); pointer-events: none; }
@@ -672,14 +675,14 @@
     .products-intro p { font-size:1.1rem; color:var(--white-dim); line-height:1.9; font-style:italic; }
     .products-circles-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:0 1rem 1rem; }
     .products-circles-wrap::-webkit-scrollbar { display:none; }
-    .products-circles { display:flex; gap:2rem; max-width:1200px; margin:0 auto; padding:0.5rem 1rem; justify-content:center; flex-wrap:wrap; }
-    .prod-circle-item { display:flex; flex-direction:column; align-items:center; gap:1rem; width:205px; flex-shrink:0; cursor:pointer; text-decoration:none; color:inherit; }
-    .prod-circle-img { width:182px; height:182px; border-radius:50%; overflow:hidden; border:1.5px solid rgba(76,175,80,0.28); transition:all 0.4s var(--ease); flex-shrink:0; position:relative; }
-    .prod-circle-item:hover .prod-circle-img { border-color:var(--green-bright); box-shadow:0 0 30px rgba(76,175,80,0.22); }
+    .products-circles { display:flex; gap:3rem; max-width:1200px; margin:0 auto; padding:0.5rem 1rem; justify-content:center; flex-wrap:wrap; }
+    .prod-circle-item { display:flex; flex-direction:column; align-items:center; gap:1.25rem; width:220px; flex-shrink:0; cursor:pointer; text-decoration:none; color:inherit; }
+    .prod-circle-img { width:200px; height:200px; border-radius:50%; overflow:hidden; border:2px solid rgba(255,255,255,0.1); transition:all 0.4s var(--ease); flex-shrink:0; position:relative; }
+    .prod-circle-item:hover .prod-circle-img { border-color:var(--white); box-shadow:0 0 40px rgba(255,255,255,0.1); }
     .prod-circle-img img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; transition:transform 0.6s var(--ease); }
-    .prod-circle-item:hover .prod-circle-img img { transform:scale(1.09); }
+    .prod-circle-item:hover .prod-circle-img img { transform:scale(1.05); }
     .prod-circle-info { text-align:center; }
-    .prod-circle-name { font-size:0.79rem; color:var(--white); line-height:1.5; margin-bottom:0.35rem; font-weight:400; }
+    .prod-circle-name { font-size:1.1rem; font-family:var(--font-body); color:var(--white); line-height:1.4; margin-top:0.5rem; font-weight:400; }
     .prod-circle-price { font-family:var(--font-display); font-size:1.05rem; font-weight:700; color:var(--gold); }
     .prod-circle-size { font-size:0.69rem; color:rgba(255,255,255,0.38); letter-spacing:0.05em; margin-top:0.12rem; }
     .products-footer { text-align:center; margin-top:4.5rem; display:flex; flex-direction:column; align-items:center; gap:1.5rem; }
@@ -688,8 +691,24 @@
     .social-link { display:inline-flex; align-items:center; gap:0.6rem; color:rgba(255,255,255,0.45); text-decoration:none; font-size:0.82rem; letter-spacing:0.08em; padding-bottom:2px; border-bottom:1px solid rgba(255,255,255,0.14); transition:all 0.3s ease; }
     .social-link:hover { color:var(--green-bright); border-color:var(--green-bright); }
 
-    /* ── ABOUT ── */
-    #about { padding:8rem 2rem; background:var(--dark-warm); position:relative; }
+    /* ── SHOP CARDS ── */
+    .shop-section { padding: 8rem 2rem; background: #F5F2ED; color: #1a1a1a; }
+    .shop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 3rem; max-width: 1200px; margin: 4rem auto 0; }
+    .shop-card { background: white; border-radius: 4px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s ease; border: 1px solid rgba(0,0,0,0.05); text-decoration: none; color: inherit; display: block; }
+    .shop-card:hover { transform: translateY(-8px); }
+    .shop-card-img { width: 100%; aspect-ratio: 4/5; overflow: hidden; position: relative; }
+    .shop-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .shop-card:hover .shop-card-img img { transform: scale(1.05); }
+    .shop-card-badge { position: absolute; top: 1.5rem; left: 1.5rem; background: #1a1a1a; color: white; padding: 0.5rem 1rem; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; z-index: 2; font-family: var(--font-body); }
+    .shop-card-content { padding: 2rem; text-align: left; }
+    .shop-card-title { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 0.75rem; color: #1a1a1a; }
+    .shop-card-details { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .shop-card-size { font-size: 0.8rem; color: #666; font-family: var(--font-body); display: flex; align-items: center; gap: 0.5rem; }
+    .shop-card-price { font-size: 1.3rem; font-weight: 600; color: #2E7D32; font-family: var(--font-body); }
+    .shop-card-btn { display: inline-block; padding: 1rem 2rem; border: 1px solid #1a1a1a; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.15em; transition: all 0.3s ease; }
+    .shop-card:hover .shop-card-btn { background: #1a1a1a; color: white; }
+    .section-title-dark { font-family: var(--font-display); font-size: 3rem; text-align: center; color: #1a1a1a; font-weight: 300; }
+    .section-subtitle-dark { text-align: center; color: #666; font-style: italic; font-size: 1.1rem; margin-top: 1rem; }
     #about::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(to right,transparent,rgba(76,175,80,0.22),transparent); }
     .about-container { max-width:780px; margin:0 auto; }
     .about-frame { border:1px solid rgba(76,175,80,0.18); border-radius:4px; overflow:hidden; background:rgba(255,255,255,0.015); }
@@ -1146,35 +1165,64 @@
 <!-- ── PRODUCTS ── -->
 <section id="products">
   <div class="products-intro reveal">
-    <div class="section-eyebrow" style="justify-content:center;margin-bottom:1.25rem">The Collection</div>
-    <p>Our products range from small pieces to full wall installations.</p>
+    <div class="hero-dots" style="position:relative; bottom:auto; left:auto; transform:none; margin-bottom:2rem; justify-content:center;">
+      <button class="dot" aria-label="Slide 1"></button>
+      <button class="dot active" aria-label="Slide 2"></button>
+      <button class="dot" aria-label="Slide 3"></button>
+    </div>
+    <h2 class="font-cormorant text-center" style="font-size:2.4rem; font-weight:300; margin-bottom:3rem; color:var(--white);">Shop by Collections</h2>
   </div>
 
   <div class="products-circles-wrap">
-    <div class="products-circles reveal d1">
+    <div class="products-circles reveal d1" style="flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; padding-bottom: 2rem;">
 
-      <!-- Product 1 -->
-      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
+      <!-- Collection 1 -->
+      <a class="prod-circle-item" href="#">
         <div class="prod-circle-img">
-          <img src="pics/closeup-led.png" alt="Handcrafted Moss Art with Grapevine Wood">
-          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
+          <img src="pics/prod-moss-basic.png" alt="Moss Lettering">
         </div>
-        <div class="prod-circle-info">
-          <div class="prod-circle-name">Handcrafted Moss Art with Grapevine Wood &amp; Epoxy Resin</div>
-          <div class="prod-circle-price">$375</div>
-          <div class="prod-circle-size">40 in × 10 in</div>
-        </div>
+        <div class="prod-circle-name">Moss Lettering ¹</div>
       </a>
 
-      <!-- Product 2 -->
-      <a class="prod-circle-item" href="https://www.etsy.com/shop/greenplaceco" target="_blank" rel="noopener">
+      <!-- Collection 2 -->
+      <a class="prod-circle-item" href="#">
         <div class="prod-circle-img">
-          <img src="pics/tall-panel.png" alt="Central Park Moss Wall Art">
-          <div class="prod-circle-overlay"><span class="prod-circle-overlay-text">View on Etsy →</span></div>
+          <img src="pics/prod-led-forest.png" alt="Moss Clocks">
         </div>
-        <div class="prod-circle-info">
-          <div class="prod-circle-name">Large Stabilized Moss Wall Art "Central Park"</div>
-          <div class="prod-circle-price">$790</div>
+        <div class="prod-circle-name">Moss Clocks ²</div>
+      </a>
+
+      <!-- Collection 3 -->
+      <a class="prod-circle-item" href="#">
+        <div class="prod-circle-img">
+          <img src="pics/tall-panel.png" alt="Moss Panels">
+        </div>
+        <div class="prod-circle-name">Moss Panels ³</div>
+      </a>
+
+      <!-- Collection 4 -->
+      <a class="prod-circle-item" href="#">
+        <div class="prod-circle-img">
+          <img src="pics/prod-three-panel.png" alt="Custom Art">
+        </div>
+        <div class="prod-circle-name">Custom Art ⁴</div>
+      </a>
+
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center gap-6 mt-8">
+    <div class="flex items-center gap-4 bg-white/5 border border-white/10 px-4 py-2 rounded-full">
+      <button class="text-white/40 hover:text-white transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <span class="font-inter text-[12px] tracking-widest text-white/60">4 / 5</span>
+      <button class="text-white/40 hover:text-white transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
           <div class="prod-circle-size">200×40 cm · LED Panel · Red Oak Frame</div>
         </div>
       </a>
@@ -1713,6 +1761,134 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       Instagram · @greenplace.corp
     </a>
+  </div>
+</section>
+
+
+<!-- ── AVAILABLE FOR PURCHASE ── -->
+<section class="shop-section reveal">
+  <div class="container-wide">
+    <h2 class="section-title-dark">What’s available for purchase</h2>
+    <p class="section-subtitle-dark">Exquisite handcrafted pieces ready for your home</p>
+
+    <div class="shop-grid">
+      <!-- Product 1 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Featured Piece</div>
+          <img src="pics/moss-epoxy-art.jpg" alt="Handcrafted Moss Art with Grapevine Wood & Epoxy Resin">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">Handcrafted Moss Art with Grapevine Wood & Epoxy Resin</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">Size: 40 in × 10 in</span>
+            <span class="shop-card-price">$375.00</span>
+          </div>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+
+      <!-- Product 2 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Illuminated Series</div>
+          <img src="pics/central-park-moss.jpg" alt="Large Stabilized Moss Wall Art Central Park">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">Large Stabilized Moss Wall Art “Central Park”</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">Size: 200 × 40 cm</span>
+            <span class="shop-card-price">$790.00</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">Red Oak Frame · Natural Preserved Plants · Modern Eco Deco</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+
+      <!-- Product 3 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Eco Series</div>
+          <img src="pics/eco-forest-panel.jpg" alt="LED Preserved Moss Wall Art Eco Forest Panel">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">LED Preserved Moss Wall Art – Eco Forest Panel</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">Size: 30 × 40 cm</span>
+            <span class="shop-card-price">$240.00</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">Red Oak Frame · Handmade Botanical Art · Alive Wall Art</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+
+      <!-- Product 4 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Artisan Series</div>
+          <img src="pics/moss-grapevine-epoxy.jpg" alt="Handcrafted Moss Art with Grapevine Wood & Epoxy Resin LED Lighted">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">Handcrafted Moss Art with Grapevine Wood & Epoxy Resin</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">LED Lighted · Red Oak Frame</span>
+            <span class="shop-card-price">$490.00</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">Unique Natural Interior Artwork · Bespoke Craftsmanship</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+
+      <!-- Product 5 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Premium Collection</div>
+          <img src="pics/large-trio-moss.jpg" alt="Large LED Moss Wall Art Panel with 3 Moss Types">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">Large LED Moss Wall Art – Artisan Trio Panel</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">Available in different sizes</span>
+            <span class="shop-card-price">from $1200</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">3 Moss Types · Grapevine & Epoxy Resin · Handcrafted Red Oak Frame</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+
+      <!-- Product 6 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Limited Edition</div>
+          <img src="pics/america-map-moss.jpg" alt="America Map Moss Wall Art with Epoxy Oceans">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">America Map – Moss & Epoxy Art</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">From 16 × 24 in</span>
+            <span class="shop-card-price">$700.00</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">Metal Frame · Remote LED · Fluorescent Glow · Depicts Oceans & Lakes</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+    </div>
+
+    <div style="text-align: center; margin-top: 5rem; padding: 3rem; border-top: 1px solid rgba(0,0,0,0.05);">
+      <h3 class="font-cormorant" style="font-size: 2.2rem; font-weight: 300; color: #1a1a1a; margin-bottom: 1.5rem;">Custom orders available</h3>
+      <p style="color: #666; font-style: italic; margin-bottom: 2.5rem;">Have a specific vision? We specialize in bespoke botanical installations.</p>
+      
+      <div style="display: flex; justify-content: center; gap: 2rem;">
+        <a href="https://instagram.com/greenplace.corp" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: #1a1a1a; font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          Instagram
+        </a>
+        <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: #1a1a1a; font-family: var(--font-body); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid #1a1a1a; padding-bottom: 4px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          Etsy Shop
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 

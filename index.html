@@ -10,20 +10,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --black:        #0D0D0D;
-      --dark-warm:    #120E00;
+      --black:        #FFFFFF;
+      --dark-warm:    #F9F7F2;
       --green-deep:   #1A4D1A;
       --green-mid:    #2E7D32;
-      --green-bright: #4CAF50;
-      --gold:         #E8C840;
-      --gold-light:   #F2D048;
-      --white:        #FFFFFF;
-      --white-dim:    rgba(255,255,255,0.65);
-      --white-ghost:  rgba(255,255,255,0.05);
+      --green-bright: #2E7D32;
+      --gold:         #B8860B;
+      --gold-light:   #DAA520;
+      --white:        #1A1A1A;
+      --white-dim:    rgba(0,0,0,0.65);
+      --white-ghost:  rgba(0,0,0,0.05);
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'Jost', system-ui, sans-serif;
-      --glow-green:        0 0 40px rgba(76,175,80,0.25), 0 0 80px rgba(76,175,80,0.10);
-      --glow-green-strong: 0 0 20px rgba(76,175,80,0.55), 0 0 60px rgba(76,175,80,0.25), 0 0 120px rgba(76,175,80,0.10);
+      --glow-green:        0 0 40px rgba(46,125,50,0.15), 0 0 80px rgba(46,125,50,0.05);
+      --glow-green-strong: 0 0 20px rgba(46,125,50,0.25), 0 0 60px rgba(46,125,50,0.15), 0 0 120px rgba(46,125,50,0.05);
       --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -69,9 +69,9 @@
     }
     nav.scrolled {
       padding: 1rem 3.5rem;
-      background: rgba(11,11,9,0.92);
+      background: rgba(255,255,255,0.95);
       backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(76,175,80,0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     .nav-logo {
       font-family: var(--font-display); font-size: 1.25rem; font-weight: 800;
@@ -141,9 +141,9 @@
     #hero-spacer { height: 100vh; display: block; }
     .hero-slides { position: absolute; inset: 0; }
     .hero-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.3s ease; background-size: cover; background-position: center; }
-    .hero-slide:nth-child(1) { background-image: url('pics/hero-1.jpg'); }
-    .hero-slide:nth-child(2) { background-image: url('pics/hero-2.jpg'); }
-    .hero-slide:nth-child(3) { background-image: url('pics/hero-3.jpg'); }
+    .hero-slide:nth-child(1) { background-image: url('pics/hero.png'); }
+    .hero-slide:nth-child(2) { background-image: url('pics/lifestyle-sofa.png'); }
+    .hero-slide:nth-child(3) { background-image: url('pics/moss-glow-wall.png'); }
     .hero-slide.active { opacity: 1; }
     .hero-slide-bg { display: none; }
     .hero-slide-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.5)); z-index: 1; }
@@ -164,11 +164,11 @@
       font-weight: 900;
       line-height: 0.88;
       letter-spacing: -0.04em;
-      color: var(--white);
+      color: #FFFFFF;
       margin-bottom: 2.75rem;
       opacity: 0; transform: translateY(22px);
       transition: opacity 0.9s ease 0.2s, transform 0.9s var(--ease-out) 0.2s;
-      text-shadow: 0 0 120px rgba(255,255,255,0.06);
+      text-shadow: 0 4px 30px rgba(0,0,0,0.3);
     }
     .hero-slide.active .hero-slide-title { opacity: 1; transform: translateY(0); }
     .hero-title-accent { font-style: italic; color: var(--gold); font-weight: 800; display: block; }
@@ -1776,7 +1776,7 @@
       <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
         <div class="shop-card-img">
           <div class="shop-card-badge">Featured Piece</div>
-          <img src="pics/moss-epoxy-art.jpg" alt="Handcrafted Moss Art with Grapevine Wood & Epoxy Resin">
+          <img src="pics/moss-glow-wall.png" alt="Handcrafted Moss Art with Grapevine Wood & Epoxy Resin">
         </div>
         <div class="shop-card-content">
           <h3 class="shop-card-title">Handcrafted Moss Art with Grapevine Wood & Epoxy Resin</h3>
@@ -1792,7 +1792,7 @@
       <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
         <div class="shop-card-img">
           <div class="shop-card-badge">Illuminated Series</div>
-          <img src="pics/central-park-moss.jpg" alt="Large Stabilized Moss Wall Art Central Park">
+          <img src="pics/tall-panel.png" alt="Large Stabilized Moss Wall Art Central Park">
         </div>
         <div class="shop-card-content">
           <h3 class="shop-card-title">Large Stabilized Moss Wall Art “Central Park”</h3>
@@ -1809,7 +1809,7 @@
       <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
         <div class="shop-card-img">
           <div class="shop-card-badge">Eco Series</div>
-          <img src="pics/eco-forest-panel.jpg" alt="LED Preserved Moss Wall Art Eco Forest Panel">
+          <img src="pics/prod-led-forest.png" alt="LED Preserved Moss Wall Art Eco Forest Panel">
         </div>
         <div class="shop-card-content">
           <h3 class="shop-card-title">LED Preserved Moss Wall Art – Eco Forest Panel</h3>
@@ -1826,7 +1826,7 @@
       <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
         <div class="shop-card-img">
           <div class="shop-card-badge">Artisan Series</div>
-          <img src="pics/moss-grapevine-epoxy.jpg" alt="Handcrafted Moss Art with Grapevine Wood & Epoxy Resin LED Lighted">
+          <img src="pics/closeup-led.png" alt="Handcrafted Moss Art with Grapevine Wood & Epoxy Resin LED Lighted">
         </div>
         <div class="shop-card-content">
           <h3 class="shop-card-title">Handcrafted Moss Art with Grapevine Wood & Epoxy Resin</h3>
@@ -1843,11 +1843,36 @@
       <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
         <div class="shop-card-img">
           <div class="shop-card-badge">Premium Collection</div>
-          <img src="pics/large-trio-moss.jpg" alt="Large LED Moss Wall Art Panel with 3 Moss Types">
+          <img src="pics/prod-three-panel.png" alt="Large LED Moss Wall Art Panel with 3 Moss Types">
         </div>
         <div class="shop-card-content">
           <h3 class="shop-card-title">Large LED Moss Wall Art – Artisan Trio Panel</h3>
           <div class="shop-card-details">
+            <span class="shop-card-size">Available in different sizes</span>
+            <span class="shop-card-price">from $1200</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">3 Moss Types · Grapevine & Epoxy Resin · Handcrafted Red Oak Frame</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+
+      <!-- Product 6 -->
+      <a href="https://www.etsy.com/shop/greenplaceco" target="_blank" class="shop-card">
+        <div class="shop-card-img">
+          <div class="shop-card-badge">Limited Edition</div>
+          <img src="pics/lifestyle-sofa.png" alt="America Map Moss Wall Art with Epoxy Oceans">
+        </div>
+        <div class="shop-card-content">
+          <h3 class="shop-card-title">America Map – Moss & Epoxy Art</h3>
+          <div class="shop-card-details">
+            <span class="shop-card-size">From 16 × 24 in</span>
+            <span class="shop-card-price">$700.00</span>
+          </div>
+          <p style="font-size: 0.75rem; color: #888; margin-bottom: 1.5rem; line-height: 1.4;">Metal Frame · Remote LED · Fluorescent Glow · Depicts Oceans & Lakes</p>
+          <span class="shop-card-btn">Purchase on Etsy</span>
+        </div>
+      </a>
+    </div>
             <span class="shop-card-size">Available in different sizes</span>
             <span class="shop-card-price">from $1200</span>
           </div>
